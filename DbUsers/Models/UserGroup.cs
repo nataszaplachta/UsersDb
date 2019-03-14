@@ -5,10 +5,11 @@ using System.Threading.Tasks;
 
 namespace DbUsers.Models
 {
-    public class Group
+    public class UserGroup
     {
+        public int UserId { get; set; }
+        public User User { get; set; }
         public int GroupId { get; set; }
-        public string Name { get; set; }
-        public ICollection<User> Users { get; set; }
+        public Group Group { get; set; }
     }
 }

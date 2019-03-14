@@ -1,5 +1,6 @@
 ﻿using DbUsers.Models;
-using Microsoft.EntityFrameworkCore;
+using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace Store.Data
 {
@@ -9,10 +10,21 @@ namespace Store.Data
 
         public DbSet<Group> Groups { get; set; }
 
-        public dbContext(DbContextOptions<dbContext> options)
-            : base(options)
+        public dbContext() : base("UserDb")
         {
-
         }
+        protected override void OnModelCreating (DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+
+            //modelBuilder.Entity<User>()
+            // .HasMany(c => c.Group)
+            // .WithMany(c => c.Users)
+            // .Map(t => t.MapLeftKey("UserId")
+            //     .MapRightKey("GroupId")
+            //     .ToTable("CourseInstructor"));
+        }
+        }
+      
     }
-}
+

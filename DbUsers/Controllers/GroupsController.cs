@@ -34,7 +34,7 @@ namespace DbUsers.Controllers
             }
 
             var @group = await _context.Groups
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.GroupId == id);
             if (@group == null)
             {
                 return NotFound();
@@ -88,7 +88,7 @@ namespace DbUsers.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Group @group)
         {
-            if (id != @group.Id)
+            if (id != @group.GroupId)
             {
                 return NotFound();
             }
@@ -102,7 +102,7 @@ namespace DbUsers.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!GroupExists(@group.Id))
+                    if (!GroupExists(@group.GroupId))
                     {
                         return NotFound();
                     }
@@ -125,7 +125,7 @@ namespace DbUsers.Controllers
             }
 
             var @group = await _context.Groups
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.GroupId == id);
             if (@group == null)
             {
                 return NotFound();
@@ -147,7 +147,7 @@ namespace DbUsers.Controllers
 
         private bool GroupExists(int id)
         {
-            return _context.Groups.Any(e => e.Id == id);
+            return _context.Groups.Any(e => e.GroupId == id);
         }
     }
 }
