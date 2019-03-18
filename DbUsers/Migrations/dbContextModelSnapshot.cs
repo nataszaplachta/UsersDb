@@ -8,7 +8,7 @@ using Store.Data;
 
 namespace DbUsers.Migrations
 {
-    [DbContext(typeof(dbContext))]
+    [DbContext(typeof(UserDbContext))]
     partial class dbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

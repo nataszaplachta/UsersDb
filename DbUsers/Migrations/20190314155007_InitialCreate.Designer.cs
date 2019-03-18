@@ -9,7 +9,7 @@ using Store.Data;
 
 namespace DbUsers.Migrations
 {
-    [DbContext(typeof(dbContext))]
+    [DbContext(typeof(UserDbContext))]
     [Migration("20190314155007_InitialCreate")]
     partial class InitialCreate
     {

@@ -9,6 +9,6 @@ namespace DbUsers.Models
     {
         public int GroupId { get; set; }
         public string Name { get; set; }
-        public ICollection<User> Users { get; set; }
+        public ICollection<UserGroup> UserGroups { get; set; }
     }
 }
