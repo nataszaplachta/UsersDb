@@ -9,6 +9,7 @@ namespace Store.Data
         public DbSet<User>Users { get; set; }
 
         public DbSet<Group> Groups { get; set; }
+        
 
         public dbContext() : base("UserDb")
         {
@@ -17,12 +18,12 @@ namespace Store.Data
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
-            //modelBuilder.Entity<User>()
-            // .HasMany(c => c.Group)
-            // .WithMany(c => c.Users)
-            // .Map(t => t.MapLeftKey("UserId")
-            //     .MapRightKey("GroupId")
-            //     .ToTable("CourseInstructor"));
+            modelBuilder.Entity<Group>()
+             .HasMany(c => c.Users)
+             .WithMany(c => c.Groups)
+             .Map(t => t.MapLeftKey("GroupId")
+                 .MapRightKey("UserId")
+                 .ToTable("UserGroup"));
         }
         }
       

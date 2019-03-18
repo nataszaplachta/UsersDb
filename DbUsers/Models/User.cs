@@ -13,7 +13,7 @@ namespace DbUsers.Models
 
         public string Surname { get; set; }
 
-        public Group Group { get; set; }
+        public ICollection<Group> Groups { get; set; }
 
     }
 }
